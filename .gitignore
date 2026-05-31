@@ -1,0 +1,6 @@
+# Local node/temp/IDE files
+.gemini/
+scratch/
+temp_profile/
+*.pyc
+__pycache__/

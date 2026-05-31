@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chronicles of Kael | Shadow Blade</title>
+    <link rel="stylesheet" href="story.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Floating Canvas for particles -->
+    <canvas id="ember-canvas"></canvas>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="index.html" class="logo">SHADOW BLADE</a>
+        <div class="nav-links">
+            <a href="index.html">← BACK TO HOME</a>
+            <a href="generals.html">THE FIVE GENERALS</a>
+        </div>
+    </nav>
+
+    <!-- Chapter Side Tracker -->
+    <div class="story-tracker">
+        <div class="tracker-item active" id="dot-1" onclick="scrollToSection(1)">
+            <span class="tracker-label">Chapter I</span>
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-2" onclick="scrollToSection(2)">
+            <span class="tracker-label">Chapter II</span>
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-3" onclick="scrollToSection(3)">
+            <span class="tracker-label">Chapter III</span>
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-4" onclick="scrollToSection(4)">
+            <span class="tracker-label">Chapter IV</span>
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-5" onclick="scrollToSection(5)">
+            <span class="tracker-label">Chapter V</span>
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-6" onclick="scrollToSection(6)">
+            <span class="tracker-label">Chapter VI</span>
+            <div class="tracker-dot"></div>
+        </div>
+    </div>
+
+    <!-- Scrolling sections container -->
+    <div class="story-container">
+
+        <!-- Chapter 1: The Legacy of the Three Sacred Swords (Layout Left) -->
+        <section class="chapter-section layout-left" id="chapter1" data-index="1">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+            
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/image 1.png" alt="Three Sacred Swords" class="chapter-img">
+                    </div>
+                </div>
+                
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter I</span>
+                        <h2 class="chapter-title">The Legacy of the Three Sacred Swords</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>Long ago, three divine swords were forged by the ancient guardians of the realm. The first was the <strong>Flame Sword</strong>, capable of unleashing devastating fire and overwhelming offensive power. The second was the <strong>Storm Sword</strong>, which controlled wind and lightning, granting incredible speed and precision in battle. The third was the <strong>Spirit Sword</strong>, a sacred weapon that possessed the power of protection, healing, and inner strength.</p>
+                            <p>These three swords were entrusted to the kingdom's greatest protector—the hero's father. For many years, he defended the village and brought peace to the land. However, when the ruthless Vardan Army first invaded, he fought courageously to protect his people. Though he saved countless lives, he sacrificed his own life in battle. Before his death, he ensured the three swords were hidden across the realm, waiting for the day his son would be worthy enough to claim them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2: The Young Warrior's Journey (Layout Right) -->
+        <section class="chapter-section layout-right" id="chapter2" data-index="2">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/Image 2.png" alt="Young Warrior Training" class="chapter-img">
+                    </div>
+                </div>
+
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter II</span>
+                        <h2 class="chapter-title">The Young Warrior's Journey</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>After his father's death, the young warrior inherited his father's duty but not his strength. Determined to honor his father's legacy, he spent years training to become a protector of the village. Every day he practiced swordsmanship, discipline, and endurance, hoping to one day live up to the legend of the man who came before him.</p>
+                            <p>Yet despite all his effort, he was still in the middle of his training and had much to learn. Deep inside, he dreamed of finding the three sacred swords and becoming the hero his village needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3: The Fall of the Village (Layout Left) -->
+        <section class="chapter-section layout-left" id="chapter3" data-index="3">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/image 3.png" alt="Fall of the Village" class="chapter-img">
+                    </div>
+                </div>
+
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter III</span>
+                        <h2 class="chapter-title">The Fall of the Village</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>Before the warrior could complete his training, disaster struck. The Vardan Army returned stronger than ever, led by powerful generals who had conquered countless lands. They attacked the village without mercy, capturing innocent people and setting homes ablaze.</p>
+                            <p>The young warrior rushed into battle and fought with everything he had. He refused to back down and stood against the invaders despite the overwhelming odds. However, courage alone was not enough. He had not yet mastered his skills, and the enemy generals were far beyond his current abilities. Despite his determination and effort, he was defeated and left helpless as his village fell into enemy hands.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4: The Sage's Final Sacrifice (Layout Right) -->
+        <section class="chapter-section layout-right" id="chapter4" data-index="4">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/image 4.png" alt="Sage Final Sacrifice" class="chapter-img">
+                    </div>
+                </div>
+
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter IV</span>
+                        <h2 class="chapter-title">The Sage's Final Sacrifice</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>As enemy soldiers closed in from every direction, an ancient sage appeared amidst the chaos. The sage had secretly watched over the warrior since the death of his father and understood the destiny that awaited him. Knowing that the last hope of the kingdom could not die that day, he stood between the hero and the Vardan Army.</p>
+                            <p>Using his ancient powers, he held back countless enemies and created a path for escape. The warrior refused to leave and wished to fight beside him, but the sage revealed the truth about the Three Sacred Swords and told him that his journey was only beginning. With his final strength, the sage sacrificed his life to ensure the hero's escape. As the warrior fled into the wilderness, he watched the sage fall, carrying with him the burden of another painful loss.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5: The Quest for the Three Ultimate Swords (Layout Left) -->
+        <section class="chapter-section layout-left" id="chapter5" data-index="5">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/image 5.png" alt="Three Ultimate Swords" class="chapter-img">
+                    </div>
+                </div>
+
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter V</span>
+                        <h2 class="chapter-title">The Quest for the Three Ultimate Swords</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>The warrior traveled deep into an ancient forest and devoted himself to years of relentless training. Through storms, harsh winters, and countless hardships, he forged himself into a true warrior. During his journey, he encountered a mysterious guardian who possessed an ancient book containing the secrets of the Three Ultimate Swords.</p>
+                            <p>Following the clues hidden within its pages, he embarked on dangerous quests across forgotten temples, cursed mountains, and ancient ruins. After surviving countless trials, he discovered the <strong>Flame Sword</strong> and mastered its destructive fire. He then claimed the <strong>Storm Sword</strong> and learned to command lightning and wind. Finally, after overcoming his greatest challenge, he awakened the <strong>Spirit Sword</strong> and unlocked its sacred power.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6: The Return of the Legendary Protector (Layout Right) -->
+        <section class="chapter-section layout-right" id="chapter6" data-index="6">
+            <div class="fog-wrapper">
+                <div class="fog-layer fog-layer-1"></div>
+                <div class="fog-layer fog-layer-2"></div>
+            </div>
+
+            <div class="chapter-grid">
+                <div class="chapter-image-side animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="Story Images/image 6.png" alt="Return of Protector" class="chapter-img">
+                    </div>
+                </div>
+
+                <div class="chapter-text-side animate-on-scroll">
+                    <div class="glass-card">
+                        <span class="chapter-num">Chapter VI</span>
+                        <h2 class="chapter-title">The Return of the Legendary Protector</h2>
+                        <div class="chapter-divider"></div>
+                        <div class="chapter-text">
+                            <p>Years later, the warrior returned to the kingdom that had once fallen into despair. Armed with the combined power of the Flame, Storm, and Spirit Swords, he challenged the Vardan generals one by one. Each battle tested his strength, wisdom, and determination, but unlike before, he emerged victorious. One after another, the generals were defeated, and the Vardan Army began to crumble.</p>
+                            <p>Finally, the warrior confronted the Vardan King, the tyrant responsible for the suffering of his people. Their battle shook the land itself, but in the end, the warrior unleashed the combined power of all three sacred swords and defeated the king forever. The villagers were freed, peace returned to the kingdom, and the young warrior fulfilled the legacies of both his father and the sage, becoming the greatest protector the realm had ever known.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Floating Sparks Canvas Animation
+        const canvas = document.getElementById('ember-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Ember {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * height; // Distribute vertically at start
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 20;
+                this.size = Math.random() * 2.2 + 0.6;
+                this.speedY = -(Math.random() * 1.6 + 0.4);
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.decay = Math.random() * 0.0025 + 0.0008;
+                
+                // Warm ember glow color variations
+                const colors = [
+                    'rgba(255, 94, 58, ',  // Crimson-orange
+                    'rgba(255, 167, 38, ', // Gold-orange
+                    'rgba(255, 235, 59, ', // Yellow
+                    'rgba(255, 255, 255, ' // Bright white spark
+                ];
+                this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.opacity -= this.decay;
+                if (this.y < -10 || this.opacity <= 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.colorPrefix + this.opacity + ')';
+                ctx.shadowColor = 'rgba(255, 94, 58, 0.4)';
+                ctx.shadowBlur = this.size * 2.5;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        const embers = [];
+        const maxEmbers = 85;
+        for (let i = 0; i < maxEmbers; i++) {
+            embers.push(new Ember());
+        }
+
+        function animateEmbers() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < embers.length; i++) {
+                embers[i].update();
+                embers[i].draw();
+            }
+            requestAnimationFrame(animateEmbers);
+        }
+        animateEmbers();
+
+        // Smooth Scroll snap link navigation
+        function scrollToSection(index) {
+            const section = document.getElementById(`chapter${index}`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Active tracker highlights and glow color updates on scroll
+        const sections = document.querySelectorAll('.chapter-section');
+        const trackerItems = document.querySelectorAll('.tracker-item');
+        const tracker = document.querySelector('.story-tracker');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = entry.target.dataset.index;
+                    trackerItems.forEach(item => item.classList.remove('active'));
+                    
+                    const activeItem = document.getElementById(`dot-${idx}`);
+                    if (activeItem) {
+                        activeItem.classList.add('active');
+                        // Set CSS custom property to change dot glow color dynamically
+                        const glowColor = getComputedStyle(entry.target).getPropertyValue('--glow-color').trim();
+                        tracker.style.setProperty('--active-glow-color', glowColor);
+                    }
+                }
+            });
+        }, {
+            root: document.querySelector('.story-container'),
+            threshold: 0.5 // trigger when half-visible
+        });
+
+        sections.forEach(section => sectionObserver.observe(section));
+
+        // Elements reveal animation trigger on viewport entry
+        const animObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            root: document.querySelector('.story-container'),
+            threshold: 0.15
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => animObserver.observe(el));
+    </script>
+</body>
+</html>

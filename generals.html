@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Five Generals | Shadow Blade</title>
+    <link rel="stylesheet" href="generals.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" style="color: var(--gray-text); text-decoration: none; font-size: 0.8rem; position: absolute; left: 40px; top: 40px;">← BACK TO HOME</a>
+        <span class="header-label">Boss Compendium</span>
+        <h1>The Five Cursed Generals</h1>
+    </header>
+
+    <div class="container">
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="showBoss(0)">I · Ryū</button>
+            <button class="tab-btn" onclick="showBoss(1)">II · Kazan</button>
+            <button class="tab-btn" onclick="showBoss(2)">III · Yomi</button>
+            <button class="tab-btn" onclick="showBoss(3)">IV · Shira</button>
+            <button class="tab-btn" onclick="showBoss(4)">V · Mugen</button>
+        </div>
+
+        <!-- BOSS 1: RYU -->
+        <div class="boss-display active ryu-theme" id="boss-0">
+            <div class="boss-image-side">
+                <img src="Characters/Gemini_Generated_Image_7cwsa97cwsa97cws.png" alt="Ryu" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%;">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">ELEMENT: WIND</p>
+                </div>
+            </div>
+            <div class="boss-info-side">
+                <p class="boss-num" style="color: var(--neon-blue);">GENERAL I</p>
+                <h2 class="boss-name">Ryū-no-Kaze</h2>
+                <p class="boss-title">"The Wind That Cuts Before It Arrives"</p>
+                <span class="blade-tag" style="background: rgba(55, 138, 221, 0.2); color: var(--neon-blue); border: 1px solid var(--neon-blue);">Blade of Wind</span>
+                
+                <div class="detail-section">
+                    <span class="detail-label">The Appearance</span>
+                    <p class="detail-text">Tall and impossibly lean, Ryū moves like smoke. Wears a tattered blue-grey haori that billows even with no wind. His face is half-covered by a cracked ivory mask. The Shadow Blade at his hip hums constantly.</p>
+                </div>
+
+                <div class="detail-section">
+                    <span class="detail-label">Combat Techniques</span>
+                    <div class="moves-grid">
+                        <div class="move-card">
+                            <p class="move-name">Ghost Step</p>
+                            <p class="move-desc">Teleports behind you using a burst of wind. First two hits give no audio cue.</p>
+                        </div>
+                        <div class="move-card">
+                            <p class="move-name">Vacuum Slash</p>
+                            <p class="move-desc">Sends an invisible wind blade. Only visible by the grass it cuts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-box">
+                    <span class="detail-label" style="color: var(--white);">The Arena</span>
+                    <p class="detail-text" style="font-size: 0.9rem;">A cliff-top bridge at dusk. Wind so strong it pushes Kael toward the edge mid-fight. Watch the grass, not the man.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOSS 2: KAZAN -->
+        <div class="boss-display kazan-theme" id="boss-1">
+            <div class="boss-image-side">
+                <img src="Characters/Gemini_Generated_Image_2dmo3j2dmo3j2dmo.png" alt="Kazan" style="width: 100%; height: 100%; object-fit: cover;">
+                 <div style="position: absolute; bottom: 0; left: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%;">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">ELEMENT: FIRE</p>
+                </div>
+            </div>
+            <div class="boss-info-side">
+                <p class="boss-num" style="color: var(--neon-orange);">GENERAL II</p>
+                <h2 class="boss-name">Kazan</h2>
+                <p class="boss-title">"The Mountain That Burns"</p>
+                <span class="blade-tag" style="background: rgba(216, 90, 48, 0.2); color: var(--neon-orange); border: 1px solid var(--neon-orange);">Blade of Fire</span>
+                
+                <div class="detail-section">
+                    <span class="detail-label">The Appearance</span>
+                    <p class="detail-text">Enormous, built like a boulder. Scorched black armor that glows orange at the seams. His eyes are permanently ember-red from the curse.</p>
+                </div>
+
+                <div class="detail-section">
+                    <span class="detail-label">Combat Techniques</span>
+                    <div class="moves-grid">
+                        <div class="move-card">
+                            <p class="move-name">Eruption Slam</p>
+                            <p class="move-desc">Causes a ring of fire to explode outward. Jump or get knocked into lava.</p>
+                        </div>
+                        <div class="move-card">
+                            <p class="move-name">Magma Armor</p>
+                            <p class="move-desc">Immune to normal hits. Must use wind-stance to crack his shell first.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-box">
+                    <span class="detail-label" style="color: var(--white);">The Arena</span>
+                    <p class="detail-text" style="font-size: 0.9rem;">Inside an active volcano forge. The floor cracks open revealing lava in Phase 2.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOSS 3: YOMI -->
+        <div class="boss-display yomi-theme" id="boss-2">
+            <div class="boss-image-side">
+                <img src="Characters/Gemini_Generated_Image_g8kdlug8kdlug8kd.png" alt="Yomi" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%;">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">ELEMENT: POISON</p>
+                </div>
+            </div>
+            <div class="boss-info-side">
+                <p class="boss-num" style="color: var(--neon-green);">GENERAL III</p>
+                <h2 class="boss-name">Yomi</h2>
+                <p class="boss-title">"She Who Walks Through the Dying"</p>
+                <span class="blade-tag" style="background: rgba(29, 158, 117, 0.2); color: var(--neon-green); border: 1px solid var(--neon-green);">Blade of Poison</span>
+                
+                <div class="detail-section">
+                    <span class="detail-label">The Appearance</span>
+                    <p class="detail-text">Slender and eerily graceful. White hair and layered green-black silk robes that leave toxic mist on the ground. Hidden wakizashi.</p>
+                </div>
+
+                <div class="detail-section">
+                    <span class="detail-label">Combat Techniques</span>
+                    <div class="moves-grid">
+                        <div class="move-card">
+                            <p class="move-name">Widow's Kiss</p>
+                            <p class="move-desc">A precise strike that poisons you. Must destroy her hidden orbs to cure.</p>
+                        </div>
+                        <div class="move-card">
+                            <p class="move-name">Mirage Step</p>
+                            <p class="move-desc">Creates 3 clones. Use Soul Sight to find the one that casts a shadow.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-box">
+                    <span class="detail-label" style="color: var(--white);">The Arena</span>
+                    <p class="detail-text" style="font-size: 0.9rem;">A moonlit poison garden. Beautiful cherry blossoms hide lethal toxic mists.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOSS 4: SHIRA -->
+        <div class="boss-display shira-theme" id="boss-3">
+            <div class="boss-image-side">
+                <img src="Characters/Gemini_Generated_Image_f2bac9f2bac9f2ba.png" alt="Shira" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%;">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">ELEMENT: ILLUSION</p>
+                </div>
+            </div>
+            <div class="boss-info-side">
+                <p class="boss-num" style="color: var(--neon-purple);">GENERAL IV</p>
+                <h2 class="boss-name">Shira the Hollow</h2>
+                <p class="boss-title">"You Cannot Strike What Isn't There"</p>
+                <span class="blade-tag" style="background: rgba(127, 119, 221, 0.2); color: var(--neon-purple); border: 1px solid var(--neon-purple);">Blade of Illusion</span>
+                
+                <div class="detail-section">
+                    <span class="detail-label">The Appearance</span>
+                    <p class="detail-text">Unsettlingly calm. White mask, violet kimono. Their body flickers like a candle, existing halfway between worlds.</p>
+                </div>
+
+                <div class="detail-section">
+                    <span class="detail-label">Combat Techniques</span>
+                    <div class="moves-grid">
+                        <div class="move-card">
+                            <p class="move-name">The Lie</p>
+                            <p class="move-desc">False attack animations. Learn the real tell: a slight shoulder drop.</p>
+                        </div>
+                        <div class="move-card">
+                            <p class="move-name">Unmaking</p>
+                            <p class="move-desc">Phase 2: Flips the arena upside down. Gravity reverses for Kael.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-box">
+                    <span class="detail-label" style="color: var(--white);">The Unique Mechanic</span>
+                    <p class="detail-text" style="font-size: 0.9rem;">Close your eyes. Use audio cues to block real strikes while ignoring visual clones.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOSS 5: MUGEN -->
+        <div class="boss-display mugen-theme" id="boss-4">
+            <div class="boss-image-side">
+                <img src="Characters/Gemini_Generated_Image_vegm9yvegm9yvegm.png" alt="Mugen" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; bottom: 0; left: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%;">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">ELEMENT: SHADOW</p>
+                </div>
+            </div>
+            <div class="boss-info-side">
+                <p class="boss-num" style="color: var(--white);">GENERAL V</p>
+                <h2 class="boss-name">Mugen</h2>
+                <p class="boss-title">"He Was You, Once"</p>
+                <span class="blade-tag" style="background: rgba(255, 255, 255, 0.2); color: var(--white); border: 1px solid var(--white);">Blade of Shadow</span>
+                
+                <div class="detail-section">
+                    <span class="detail-label">The Appearance</span>
+                    <p class="detail-text">A mirror image of Kael, but in white robes with hollow black eyes. The first survivor who chose power over honor.</p>
+                </div>
+
+                <div class="detail-section">
+                    <span class="detail-label">Combat Techniques</span>
+                    <div class="moves-grid">
+                        <div class="move-card">
+                            <p class="move-name">Dark Mirror</p>
+                            <p class="move-desc">Copies and counters every ability you have unlocked. Don't fight like him.</p>
+                        </div>
+                        <div class="move-card">
+                            <p class="move-name">The Becoming</p>
+                            <p class="move-desc">Offers you the blade. Refuse it to trigger the true final phase.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arena-box">
+                    <span class="detail-label" style="color: var(--white);">The Arena</span>
+                    <p class="detail-text" style="font-size: 0.9rem;">The ruins of the Kurogane clan forge. Your old home—now only ash and bone.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showBoss(index) {
+            // Update tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((t, i) => {
+                if (i === index) t.classList.add('active');
+                else t.classList.remove('active');
+            });
+
+            // Update display
+            const displays = document.querySelectorAll('.boss-display');
+            displays.forEach((d, i) => {
+                if (i === index) d.classList.add('active');
+                else d.classList.remove('active');
+            });
+        }
+    </script>
+</body>
+</html>

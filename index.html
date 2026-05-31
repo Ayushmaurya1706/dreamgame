@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Blade | Official Site</title>
+    <meta name="description" content="Shadow Blade: A high-octane cyberpunk action RPG. Master the blade, survive the neon.">
+    <link rel="stylesheet" href="index.css?v=12">
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- GSAP and ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Cyberpunk Loader Overlay -->
+    <div class="loader-container" id="loader">
+        <div class="loader-content">
+            <div class="logo">SHADOW BLADE</div>
+            <div class="loader-bar-bg">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+            <div class="loader-text" id="loaderText">PREPARING INTERACTION... 0%</div>
+        </div>
+    </div>
+
+    <!-- Scroll Container (Empty space that defines scroll length for scrubbing) -->
+    <div class="scroll-container" id="scrollContainer"></div>
+
+    <!-- Fixed Viewport Container for Canvas and Hero UI -->
+    <div class="hero-fixed-container" id="heroContainer">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-overlay"></div>
+
+        <nav>
+            <div class="logo">SHADOW BLADE</div>
+            <div class="nav-links">
+                <a href="index.html">The World</a>
+                <a href="generals.html">The Five Generals</a>
+                <a href="story.html">Story</a>
+                <a href="#">Media</a>
+            </div>
+            <div class="meta-links">
+                <a href="#" style="color: var(--white); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 4px;">SIGN IN</a>
+            </div>
+        </nav>
+
+        <div class="container" id="hero-content">
+            <div class="content-box">
+                <div class="sub-header">
+                    <div class="divider"></div>
+                    <span>CYBERPUNK ACTION RPG • 2026</span>
+                </div>
+
+                <h1 class="game-title" id="title">
+                    <span class="title-line-1">SHADOW</span>
+                    <span class="title-line-2">BLADE.</span>
+                </h1>
+
+                <p class="description">
+                    12 districts. Infinite factions. One city that never sleeps — and never forgives. Your choices reshape everything in the neon-drenched streets of Neo-Saitama.
+                </p>
+
+                <div class="cta-group">
+                    <button class="btn-primary" id="playBtn">Play Free Now</button>
+                    <button class="btn-secondary" onclick="openTrailer()">
+                        <div class="play-icon">▶</div>
+                        Watch the Trailer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Features Section (revealed via diagonal clip-path during scroll) -->
+    <div class="features-reveal-wrapper" id="featuresReveal">
+        <section class="features-section" id="warriorsCode">
+            <div class="features-inner">
+                <p class="features-eyebrow">THE WARRIOR'S CODE</p>
+                <h2 class="features-title">MASTER THE BLADE</h2>
+                <p class="features-sub">Three paths. One destiny. Your honor is your weapon.</p>
+
+                <div class="features-grid">
+                    <!-- Card 1 -->
+                    <div class="feature-card reveal">
+                        <div class="card-top-bar"></div>
+                        <div class="card-icon">⚔️</div>
+                        <h3 class="card-title">COMBAT MASTERY</h3>
+                        <p class="card-text">125 unique combat techniques across 8 ancient sword schools. Every fight is a dance of death choreographed by your skill.</p>
+                        <div class="card-stat">
+                            <span class="stat-num">125</span>
+                            <span class="stat-label">Combat Techniques</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="feature-card reveal">
+                        <div class="card-top-bar"></div>
+                        <div class="card-icon">🏯</div>
+                        <h3 class="card-title">OPEN FEUDAL WORLD</h3>
+                        <p class="card-text">Explore 300+ hand-crafted battlefields, hidden shrines, and cursed forests across the neon-lit realm of Neo-Saitama.</p>
+                        <div class="card-stat">
+                            <span class="stat-num">300+</span>
+                            <span class="stat-label">Unique Locations</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="feature-card reveal">
+                        <div class="card-top-bar"></div>
+                        <div class="card-icon">🔥</div>
+                        <h3 class="card-title">CLAN WARFARE</h3>
+                        <p class="card-text">Form a clan, siege enemy castles, and dominate the seasonal war map. Glory is written in the blood of your enemies.</p>
+                        <div class="card-stat">
+                            <span class="stat-num">12</span>
+                            <span class="stat-label">Districts to Conquer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story-section" id="story">
+            <div class="story-inner">
+                 <div class="story-text-side">
+                     <p class="story-eyebrow">THE CHRONICLES OF KAEL</p>
+                     <h2 class="story-title">THE CURSED PATH</h2>
+                     <div class="story-divider"></div>
+                     <p class="story-paragraph">
+                         Once a legendary warrior of the Kurogane clan, Kael was betrayed by the Five Generals during the Siege of the Iron Citadel. Left for dead in the ruins of his forge, he was resurrected by a mysterious cybernetic entity known as the Shadow Core.
+                     </p>
+                     <p class="story-paragraph">
+                         Now, half-machine and half-spirit, Kael walks the dark streets of Neo-Saitama. Wielding the Cursed Shadow Blade, he seeks vengeance against the Generals who took everything from him. Every strike of his sword brings him closer to revenge — and closer to losing his soul to the blade.
+                     </p>
+                     <div class="story-cta">
+                         <span class="cta-label">WILL YOU EMBRACE THE SHADOW?</span>
+                     </div>
+                 </div>
+                 <div class="story-image-side">
+                     <div class="image-border-glow">
+                         <img src="story_art.png" alt="Cursed Samurai Neo-Saitama" class="story-img">
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Trailer Modal -->
+    <div id="trailerModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:1000; align-items:center; justify-content:center;">
+        <!-- Fixed top bar: title + close -->
+        <div style="position:fixed; top:0; left:0; width:100%; display:flex; align-items:center; justify-content:space-between; padding:16px 30px; box-sizing:border-box; z-index:1002; background:linear-gradient(to bottom, rgba(0,0,0,0.85), transparent); backdrop-filter:blur(4px);">
+            <h2 style="font-size:1.1rem; letter-spacing:4px; margin:0; font-weight:600; color:white;">OFFICIAL TRAILER</h2>
+            <button onclick="closeTrailer()" style="color:white; background:rgba(255,255,255,0.08); border:1px solid #444; padding:8px 22px; cursor:pointer; font-size:0.85rem; letter-spacing:1px; border-radius:4px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">CLOSE</button>
+        </div>
+
+        <!-- Full-screen video -->
+        <video id="trailerVid" src="Trailer Video.mp4" controls style="width:100vw; height:100vh; object-fit:contain; outline: none; display:block; background:#000;"></video>
+    </div>
+
+    <!-- Character Select / Play Free Now Modal -->
+    <div id="charModal" class="char-modal" style="display: none;">
+        <div class="char-modal-backdrop" onclick="closeCharModal()"></div>
+        <div class="char-modal-container">
+            <button class="char-modal-close" onclick="closeCharModal()">CLOSE</button>
+            
+            <div class="char-modal-content" id="charModalContent">
+                <!-- Animation Canvas Side -->
+                <div class="char-canvas-side">
+                    <canvas id="char-canvas"></canvas>
+                    
+                    <!-- Dark Translucent Overlay / Vignette behind text panel for readability -->
+                    <div class="char-modal-overlay"></div>
+                    
+                    <!-- Right side Information panel overlay -->
+                    <div class="char-info-panel-wrapper">
+                        <div class="char-info-card">
+                            <div class="char-accent-bar"></div>
+                            <span class="char-meta-label">WARRIOR LORE</span>
+                            <h2 class="char-name-title">KAEL</h2>
+                            
+                            <div class="char-stat-row">
+                                <span class="stat-meta">ORIGIN:</span>
+                                <span class="stat-value">KUROGANE VILLAGE</span>
+                            </div>
+                            <div class="char-stat-row">
+                                <span class="stat-meta">WEAPON:</span>
+                                <span class="stat-value">CURSED SHADOW BLADE</span>
+                            </div>
+                            
+                            <div class="char-description-box">
+                                <p>
+                                    Once the master smith of the Kurogane Forge, Kael was betrayed by the Five Generals during the Siege of the Iron Citadel. Left for dead in the embers of his home, he was reborn through the cybernetic energy of the Shadow Core.
+                                </p>
+                                <p>
+                                    Now, combining ancient sword disciplines with cybernetic speed, he seeks out the cursed generals. Each swing of his blade brings vengeance, but consumes a fragment of his remaining humanity.
+                                </p>
+                            </div>
+                            
+                            <div class="char-actions">
+                                <button class="btn-play-game" onclick="launchGameSim()">
+                                    PLAY GAME
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campaign Map Screen -->
+    <div id="campaignMapScreen" class="campaign-map-screen" style="display: none;">
+        <!-- HUD Header -->
+        <div class="map-hud-header">
+            <div class="hud-left">
+                <div class="logo">SHADOW BLADE</div>
+                <div class="hud-subtitle">STORY MODE: LEVEL SELECT</div>
+            </div>
+            <div class="hud-right">
+                <div class="hud-stat">
+                    <span class="hud-stat-label">CREDITS</span>
+                    <span class="hud-stat-val">🪙 28,838</span>
+                </div>
+                <div class="hud-stat">
+                    <span class="hud-stat-label">CORES</span>
+                    <span class="hud-stat-val">💎 14</span>
+                </div>
+                <div class="hud-stat hud-profile">
+                    <span class="hud-lvl-badge">LV 24</span>
+                    <span class="hud-stat-val">HANZÖ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Legend -->
+        <div class="map-legend">
+            <div class="legend-title">MAP LEGEND</div>
+            <div class="legend-item">
+                <div class="legend-dot dot-completed"></div>
+                <span>Completed</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-current"></div>
+                <span>Current Pulse</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-locked"></div>
+                <span>Locked Sector</span>
+            </div>
+        </div>
+
+        <!-- SVG overlay for connecting paths -->
+        <svg id="mapPathsSvg" class="map-paths-svg">
+            <!-- Neon glow filters -->
+        </svg>
+
+        <!-- Zigzag Level Nodes -->
+        <div class="map-nodes-container">
+            <!-- Level 1 -->
+            <div id="mapNode-1" class="map-node node-completed" style="left: 50%; bottom: 8%;" onclick="selectMapLevel(1)">
+                <div class="node-ring"></div>
+                <div class="node-core">1</div>
+                <div class="node-label">Awakening</div>
+            </div>
+            <!-- Level 2 -->
+            <div id="mapNode-2" class="map-node node-completed" style="left: 32%; bottom: 18%;" onclick="selectMapLevel(2)">
+                <div class="node-ring"></div>
+                <div class="node-core">2</div>
+                <div class="node-label">Training Grounds</div>
+            </div>
+            <!-- Level 3 -->
+            <div id="mapNode-3" class="map-node node-completed" style="left: 68%; bottom: 25%;" onclick="selectMapLevel(3)">
+                <div class="node-ring"></div>
+                <div class="node-core">3</div>
+                <div class="node-label">Shadow Alley</div>
+            </div>
+            <!-- Level 4 -->
+            <div id="mapNode-4" class="map-node node-completed" style="left: 45%; bottom: 38%;" onclick="selectMapLevel(4)">
+                <div class="node-ring"></div>
+                <div class="node-core">4</div>
+                <div class="node-label">Iron Forge</div>
+            </div>
+            <!-- Level 5 -->
+            <div id="mapNode-5" class="map-node node-current" style="left: 65%; bottom: 50%;" onclick="selectMapLevel(5)">
+                <div class="node-ring"></div>
+                <div class="node-core">5</div>
+                <div class="node-label">Neon Market</div>
+            </div>
+            <!-- Level 6 -->
+            <div id="mapNode-6" class="map-node node-locked" style="left: 36%; bottom: 58%;" onclick="selectMapLevel(6)">
+                <div class="node-ring"></div>
+                <div class="node-core"><span class="lock-icon">🔒</span></div>
+                <div class="node-label">Ghost Harbor</div>
+            </div>
+            <!-- Level 7 -->
+            <div id="mapNode-7" class="map-node node-locked" style="left: 58%; bottom: 70%;" onclick="selectMapLevel(7)">
+                <div class="node-ring"></div>
+                <div class="node-core"><span class="lock-icon">🔒</span></div>
+                <div class="node-label">Cyber Temple</div>
+            </div>
+            <!-- Level 8 -->
+            <div id="mapNode-8" class="map-node node-locked" style="left: 78%; bottom: 75%;" onclick="selectMapLevel(8)">
+                <div class="node-ring"></div>
+                <div class="node-core"><span class="lock-icon">🔒</span></div>
+                <div class="node-label">Crimson Peak</div>
+            </div>
+            <!-- Level 9 -->
+            <div id="mapNode-9" class="map-node node-locked" style="left: 60%; bottom: 85%;" onclick="selectMapLevel(9)">
+                <div class="node-ring"></div>
+                <div class="node-core"><span class="lock-icon">🔒</span></div>
+                <div class="node-label">Sky Citadel</div>
+            </div>
+            <!-- Level 10 -->
+            <div id="mapNode-10" class="map-node node-locked node-final" style="left: 50%; bottom: 92%;" onclick="selectMapLevel(10)">
+                <div class="node-ring"></div>
+                <div class="node-core"><span class="lock-icon">🔒</span></div>
+                <div class="node-label">Shogun's Throne</div>
+            </div>
+        </div>
+
+        <!-- Mission Detail Panel Overlay -->
+        <div id="missionDetailPanel" class="mission-panel">
+            <button class="mission-panel-close" onclick="closeMissionPanel()">CLOSE</button>
+            <div class="mission-panel-content">
+                <div class="mission-header">
+                    <span class="mission-level-num" id="mPanelLevelNum">LEVEL 5</span>
+                    <h3 class="mission-title" id="mPanelTitle">NEON MARKET</h3>
+                    <div class="mission-difficulty" id="mPanelDiff">DIFFICULTY: HARD</div>
+                </div>
+                <div class="mission-body">
+                    <p class="mission-story" id="mPanelStory">The market is in chaos. General Ryu's cyber-samurai are patrolling the plazas. Find the hidden entrance to the temple.</p>
+                </div>
+                <div class="mission-rewards">
+                    <div class="reward-title">REWARDS</div>
+                    <div class="reward-list" id="mPanelRewards">
+                        <!-- Rewards populated in JS -->
+                    </div>
+                </div>
+                <div class="mission-actions">
+                    <button class="btn-start-mission" id="btnStartMission" onclick="startMissionPlay()">START MISSION</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Hero select button for easier UX navigation -->
+        <button class="map-back-btn" onclick="exitMapScreen()">BACK TO HERO SELECT</button>
+    </div>
+
+    <script>
+    // GLOBAL ERROR DISPLAY
+    window.onerror = function(msg, src, line, col, err) {
+        var d = document.createElement('div');
+        d.style.cssText = 'position:fixed;top:0;left:0;width:100%;background:rgba(200,0,0,0.97);color:#fff;z-index:999999;padding:20px;font-family:monospace;font-size:13px;white-space:pre-wrap;box-sizing:border-box;';
+        d.innerText = 'JS ERROR: ' + msg + '\nLine: ' + line + ':' + col + '\n' + (err ? err.stack : '');
+        document.body.appendChild(d);
+        return false;
+    };
+
+    // TRAILER MODAL
+    function openTrailer()  { 
+        var modal = document.getElementById('trailerModal');
+        modal.style.display = 'flex'; 
+        var vid = document.getElementById('trailerVid');
+        if (vid) {
+            vid.currentTime = 0;
+            vid.play().catch(function(e) { console.log("Autoplay blocked:", e); });
+        }
+    }
+    function closeTrailer() { 
+        var modal = document.getElementById('trailerModal');
+        modal.style.display = 'none'; 
+        var vid = document.getElementById('trailerVid');
+        if (vid) {
+            vid.pause();
+        }
+    }
+
+    // CHARACTER MODAL - ANIMATION 2 (frames 183-240, 58 frames, all exist)
+    var charCanvas = document.getElementById('char-canvas');
+    var charCtx = charCanvas.getContext('2d');
+    var charImgSrcs = [];
+    for (var ci = 183; ci <= 240; ci++) {
+        charImgSrcs.push('Animation 2/ezgif-frame-' + ci + '.jpg');
+    }
+    var charImgs = [], charLoaded = 0, charReady = false;
+    var charModalOpen = false, charFrameIdx = 0, charLastTime = 0;
+    var CHAR_INTERVAL = 1000 / 24;
+
+    function preloadCharFrames() {
+        charImgSrcs.forEach(function(src) {
+            var img = new Image();
+            img.onload = img.onerror = function() {
+                charLoaded++;
+                if (charLoaded === charImgSrcs.length) charReady = true;
+            };
+            img.src = src;
+            charImgs.push(img);
+        });
+    }
+
+    function resizeCharCanvas() {
+        if (!charCanvas || !charCanvas.parentElement) return;
+        var r = charCanvas.parentElement.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) {
+            charCanvas.width = r.width;
+            charCanvas.height = r.height;
+        }
+    }
+
+    function drawCharFrame(idx) {
+        var w = charCanvas.width, h = charCanvas.height;
+        charCtx.clearRect(0, 0, w, h);
+
+        if (!charReady || !charImgs.length) {
+            console.log(">> drawCharFrame returning early: charReady =", charReady, "charImgs.length =", charImgs.length);
+            charCtx.fillStyle = '#000'; charCtx.fillRect(0, 0, w, h);
+            charCtx.fillStyle = '#00f3ff'; charCtx.font = '14px monospace';
+            charCtx.textAlign = 'center';
+            charCtx.fillText('LOADING WARRIOR...', w / 2, h / 2);
+
+            // DRAW TEST RENDER ON TOP OF BLACK BACKGROUND
+            charCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            charCtx.fillRect(20, 20, w - 40, h - 40);
+            charCtx.strokeStyle = '#00ff00';
+            charCtx.lineWidth = 8;
+            charCtx.strokeRect(10, 10, w - 20, h - 20);
+            return;
+        }
+        var img = charImgs[idx % charImgs.length];
+        if (!img) {
+            console.log(">> drawCharFrame: No image found at index", idx);
+            return;
+        }
+        if (img.width === 0) {
+            console.log(">> drawCharFrame: Image is not loaded yet (width is 0) for index", idx, "src =", img.src);
+            return;
+        }
+        var ir = img.width / img.height, cr = w / h;
+        var dw, dh, dx, dy;
+        if (cr > ir) { dw = w; dh = w / ir; dx = 0; dy = (h - dh) / 2; }
+        else          { dw = h * ir; dh = h; dx = (w - dw) / 2; dy = 0; }
+        charCtx.drawImage(img, dx, dy, dw, dh);
+
+        charCtx.strokeStyle = 'rgba(0,243,255,0.04)'; charCtx.lineWidth = 1;
+        for (var y = 0; y < h; y += 4) {
+            charCtx.beginPath(); charCtx.moveTo(0, y); charCtx.lineTo(w, y); charCtx.stroke();
+        }
+
+    }
+
+    function renderCharLoop(ts) {
+        if (!charModalOpen) return;
+        requestAnimationFrame(renderCharLoop);
+        
+        // Dynamically resize canvas to parent if changed or initially zero
+        if (charCanvas && charCanvas.parentElement) {
+            var r = charCanvas.parentElement.getBoundingClientRect();
+            if (charCanvas.width !== Math.floor(r.width) || charCanvas.height !== Math.floor(r.height)) {
+                charCanvas.width = r.width;
+                charCanvas.height = r.height;
+                console.log(">> Resized character canvas dynamically to:", charCanvas.width, "x", charCanvas.height);
+            }
+        }
+
+        var el = ts - charLastTime;
+        if (el < CHAR_INTERVAL) return;
+        charLastTime = ts - (el % CHAR_INTERVAL);
+        drawCharFrame(charFrameIdx);
+        if (charReady) {
+            if (charFrameIdx < charImgs.length - 1) {
+                charFrameIdx = charFrameIdx + 1;
+            } else {
+                // Freeze on final frame and add class to trigger cinematic transition
+                var mc = document.getElementById('charModalContent');
+                if (mc && !mc.classList.contains('cinematic-active')) {
+                    mc.classList.add('cinematic-active');
+                    console.log(">> Intro animation complete. Cinematic transition triggered.");
+                }
+            }
+        }
+    }
+
+    function openCharModal() {
+        console.log(">> openCharModal() triggered");
+        var m = document.getElementById('charModal');
+        m.style.display = 'flex';
+        var mc = document.getElementById('charModalContent');
+        if (mc) mc.classList.remove('cinematic-active');
+        charModalOpen = true; charFrameIdx = 0; charLastTime = 0;
+        requestAnimationFrame(function() {
+            resizeCharCanvas();
+            console.log(">> Initial canvas size attributes:", charCanvas.width, "x", charCanvas.height);
+            requestAnimationFrame(renderCharLoop);
+        });
+    }
+
+    function closeCharModal() {
+        document.getElementById('charModal').style.display = 'none';
+        charModalOpen = false;
+    }
+
+    function launchGameSim() {
+        if (!document.getElementById('boot-style')) {
+            var s = document.createElement('style'); s.id = 'boot-style';
+            s.innerHTML = '@keyframes blink-caret{from,to{border-color:transparent}50%{border-color:#00f3ff}}';
+            document.head.appendChild(s);
+        }
+        var ov = document.createElement('div');
+        ov.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:#05050a;z-index:3000;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:monospace;color:#00f3ff;padding:40px;box-sizing:border-box;font-size:1rem;';
+        var bc = document.createElement('div'); bc.style.cssText = 'max-width:600px;width:100%;';
+        ov.appendChild(bc); document.body.appendChild(ov);
+        var lines = [
+            '>> INITIALIZING SHADOW BLADE SYSTEM...',
+            '>> CONNECTING TO NEO-SAITAMA BATTLE-NET [PORT: 9811]...',
+            '>> SECURING ENCRYPTED PROTOCOL... SUCCESS.',
+            '>> RESOLVING CORE IDENTITY: "KAEL" [STATUS: betrayed_recon]...',
+            '>> LINKING CURSED SHADOW BLADE HARDWARE ID... SYNCED.',
+            '>> DOWNLOADING TACTICAL DATA: Kurogane Village [100%]...',
+            '>> BYPASSING SHADOW CORE FIREWALL... COMPLETED.',
+            '>> ENGAGING TACHYON DRIVE...',
+            '>> SHADOW BLADE CLIENT LAUNCHED. WELCOME, KAEL.'
+        ];
+        var li = 0;
+        function nextLine() {
+            if (li >= lines.length) {
+                setTimeout(function() {
+                    // Transition to Campaign Map Screen
+                    var mapScreen = document.getElementById('campaignMapScreen');
+                    mapScreen.style.display = 'block';
+                    mapScreen.style.opacity = '0';
+                    
+                    // Force a reflow
+                    mapScreen.offsetHeight;
+                    
+                    // Transition overlays
+                    ov.style.transition = 'opacity 1s ease';
+                    ov.style.opacity = '0';
+                    
+                    var charModal = document.getElementById('charModal');
+                    charModal.style.transition = 'opacity 1s ease';
+                    charModal.style.opacity = '0';
+                    
+                    mapScreen.style.transition = 'opacity 1s ease';
+                    mapScreen.style.opacity = '1';
+                    
+                    setTimeout(function() {
+                        if (ov.parentNode) ov.parentNode.removeChild(ov);
+                        
+                        // Hide character modal completely
+                        charModal.style.display = 'none';
+                        charModal.style.opacity = '1'; // Reset modal opacity for next time
+                        charModalOpen = false;
+                        
+                        // Hide the main hero container to avoid background overlap
+                        var heroContainer = document.getElementById('heroContainer');
+                        if (heroContainer) heroContainer.style.display = 'none';
+
+                        // Draw paths now that map layout is fully rendered
+                        drawConnectingPaths();
+                    }, 1000);
+                }, 1200);
+                return;
+            }
+            var p = document.createElement('p');
+            p.style.cssText = 'margin:8px 0;white-space:nowrap;overflow:hidden;border-right:2px solid #00f3ff;animation:blink-caret 0.75s step-end infinite;';
+            bc.appendChild(p);
+            var ci2 = 0, txt = lines[li];
+            function typeChar() {
+                if (ci2 < txt.length) { p.textContent += txt[ci2++]; setTimeout(typeChar, 14); }
+                else { p.style.borderRight = 'none'; li++; setTimeout(nextLine, 110); }
+            }
+            typeChar();
+        }
+        nextLine();
+    }
+
+    // SCROLL REVEAL
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                setTimeout(function() { entry.target.classList.add('visible'); }, entry.target.dataset.delay || 0);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    // HERO CANVAS ANIMATION
+    // Folder has frames 001-146. Load odd frames 001,003,...,145 = 73 frames (indices 0-72)
+    // Idle: cycles 0-42 | Raise: 43-55 | Slash: 55-65 | Recover: 65-72
+    var canvas = document.getElementById('hero-canvas');
+    var ctx = canvas.getContext('2d');
+
+    var framePaths = [];
+    for (var fi = 1; fi <= 145; fi += 2) {
+        var padded = ('00' + fi).slice(-3);
+        framePaths.push('ezgif-394856e9406b723b-jpg/ezgif-frame-' + padded + '.jpg');
+    }
+
+    var images = [], isLoaded = false;
+
+    var swordKF = {
+        0:  { tip:{x:640,y:520}, base:{x:640,y:560} },
+        35: { tip:{x:640,y:480}, base:{x:640,y:520} },
+        43: { tip:{x:640,y:450}, base:{x:640,y:500} },
+        48: { tip:{x:680,y:300}, base:{x:640,y:450} },
+        55: { tip:{x:780,y:150}, base:{x:660,y:350} },
+        57: { tip:{x:820,y:220}, base:{x:670,y:380} },
+        59: { tip:{x:800,y:320}, base:{x:660,y:400} },
+        61: { tip:{x:700,y:460}, base:{x:610,y:440} },
+        63: { tip:{x:520,y:540}, base:{x:530,y:450} },
+        65: { tip:{x:350,y:580}, base:{x:460,y:460} },
+        67: { tip:{x:250,y:580}, base:{x:420,y:470} },
+        69: { tip:{x:220,y:570}, base:{x:400,y:480} },
+        72: { tip:{x:200,y:580}, base:{x:380,y:490} }
+    };
+
+    function getSwordCoords(idx) {
+        var keys = Object.keys(swordKF).map(Number).sort(function(a,b){return a-b;});
+        if (idx <= keys[0]) return swordKF[keys[0]];
+        if (idx >= keys[keys.length-1]) return swordKF[keys[keys.length-1]];
+        var pk = keys[0], nk = keys[1];
+        for (var i = 0; i < keys.length-1; i++) {
+            if (idx >= keys[i] && idx <= keys[i+1]) { pk = keys[i]; nk = keys[i+1]; break; }
+        }
+        var pv = swordKF[pk], nv = swordKF[nk], r = (idx-pk)/(nk-pk);
+        return {
+            tip:  { x: pv.tip.x  + (nv.tip.x  - pv.tip.x)  * r, y: pv.tip.y  + (nv.tip.y  - pv.tip.y)  * r },
+            base: { x: pv.base.x + (nv.base.x - pv.base.x) * r, y: pv.base.y + (nv.base.y - pv.base.y) * r }
+        };
+    }
+
+    var particles = [];
+    function Particle(x, y, color) {
+        this.x=x; this.y=y;
+        this.vx=(Math.random()-0.5)*12; this.vy=(Math.random()-0.5)*12-3;
+        this.size=Math.random()*4+2; this.life=1.0; this.decay=Math.random()*0.04+0.02;
+        this.color=color;
+    }
+    Particle.prototype.update = function() { this.x+=this.vx; this.y+=this.vy; this.vy+=0.1; this.life-=this.decay; };
+    Particle.prototype.draw = function(c) {
+        c.fillStyle=this.color; c.globalAlpha=this.life; c.shadowColor=this.color; c.shadowBlur=10;
+        c.beginPath(); c.arc(this.x,this.y,this.size,0,Math.PI*2); c.fill(); c.globalAlpha=1; c.shadowBlur=0;
+    };
+
+    var curFI = 0, tgtFI = 35, idleFC = 0;
+    var LERP = 0.25;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        if (isLoaded) drawFrame(images[Math.floor(curFI)], Math.floor(curFI));
+    }
+    window.addEventListener('resize', function() { resizeCanvas(); resizeCharCanvas(); });
+    resizeCanvas();
+
+    function drawFrame(img, idx) {
+        if (!img || img.width === 0 || img.height === 0) return;
+        var cw = canvas.width, ch = canvas.height;
+        ctx.clearRect(0, 0, cw, ch);
+        var ir = img.width/img.height, cr = cw/ch;
+        var dw, dh, dx, dy;
+        if (cr > ir) { dw=cw; dh=cw/ir; dx=0; dy=(ch-dh)/2; }
+        else          { dw=ch*ir; dh=ch; dx=(cw-dw)/2; dy=0; }
+        var scale = dw/1280;
+        var sx=0, sy=0;
+        if (idx>=57 && idx<=63) { sx=(Math.random()-0.5)*15*scale; sy=(Math.random()-0.5)*15*scale; }
+        ctx.filter = (idx>=57 && idx<=63) ? 'blur(3px)' : 'none';
+        ctx.drawImage(img, dx+sx, dy+sy, dw, dh);
+        ctx.filter = 'none';
+        var co = getSwordCoords(idx);
+        var tip  = { x:dx+sx+co.tip.x*scale,  y:dy+sy+co.tip.y*scale  };
+        var base = { x:dx+sx+co.base.x*scale, y:dy+sy+co.base.y*scale };
+        // VFX: blade charge (43-55)
+        if (idx>=43 && idx<=55) {
+            var cp=(idx-43)/(55-43);
+            ctx.shadowColor='#00f3ff'; ctx.shadowBlur=15+Math.sin(Date.now()/80)*8;
+            ctx.strokeStyle='rgba(0,243,255,'+(0.4+cp*0.6)+')'; ctx.lineWidth=5*scale;
+            ctx.beginPath(); ctx.moveTo(base.x,base.y); ctx.lineTo(tip.x,tip.y); ctx.stroke(); ctx.shadowBlur=0;
+            var orbR=cp*24*scale;
+            if (orbR>0 && isFinite(tip.x) && isFinite(tip.y)) {
+                var g=ctx.createRadialGradient(tip.x,tip.y,0,tip.x,tip.y,orbR);
+                g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(0.3,'rgba(0,243,255,0.8)'); g.addColorStop(1,'rgba(0,243,255,0)');
+                ctx.fillStyle=g; ctx.beginPath(); ctx.arc(tip.x,tip.y,orbR,0,Math.PI*2); ctx.fill();
+            }
+        }
+        // VFX: slash trail (55-65)
+        if (idx>=55 && idx<=65) {
+            ctx.shadowColor='#00f3ff'; ctx.shadowBlur=25; ctx.lineWidth=10*scale; ctx.lineCap='round'; ctx.lineJoin='round';
+            ctx.beginPath();
+            for (var i=55; i<=idx; i++) {
+                var ci=getSwordCoords(i);
+                var tx=dx+sx+ci.tip.x*scale, ty=dy+sy+ci.tip.y*scale;
+                if (i===55) ctx.moveTo(tx,ty); else ctx.lineTo(tx,ty);
+            }
+            var sp=getSwordCoords(55).tip, x0=dx+sx+sp.x*scale, y0=dy+sy+sp.y*scale;
+            if (isFinite(x0)&&isFinite(y0)&&isFinite(tip.x)&&isFinite(tip.y)) {
+                var g2=ctx.createLinearGradient(x0,y0,tip.x,tip.y);
+                g2.addColorStop(0,'rgba(0,243,255,0)'); g2.addColorStop(0.5,'rgba(0,243,255,0.6)'); g2.addColorStop(1,'rgba(255,255,255,0.95)');
+                ctx.strokeStyle=g2; ctx.stroke();
+            }
+            ctx.shadowBlur=0;
+        }
+        if (idx>=55 && idx<=65 && Math.random()<0.8) {
+            for (var k=0;k<4;k++) particles.push(new Particle(tip.x,tip.y,k%2===0?'#00f3ff':'#ff2e4d'));
+        }
+    }
+
+    function updateParticles() {
+        for (var i=particles.length-1;i>=0;i--) {
+            particles[i].update();
+            if (particles[i].life<=0) particles.splice(i,1);
+            else particles[i].draw(ctx);
+        }
+    }
+
+    function renderLoop() {
+        if (!isLoaded) { requestAnimationFrame(renderLoop); return; }
+        if (window.scrollY < 5) {
+            idleFC += 0.35;
+            var it = Math.floor(idleFC % 43);
+            curFI += (it - curFI) * LERP;
+        } else {
+            curFI += (tgtFI - curFI) * LERP;
+            if (curFI < 35) curFI = 35;
+            if (curFI > 72) curFI = 72;
+        }
+        var ri = Math.floor(curFI);
+        drawFrame(images[ri], ri);
+        updateParticles();
+        requestAnimationFrame(renderLoop);
+    }
+
+    function preloadImages(callback) {
+        var loaded = 0;
+        framePaths.forEach(function(src) {
+            var img = new Image();
+            img.onload = function() {
+                loaded++;
+                var pct = Math.round(loaded/framePaths.length*100);
+                document.getElementById('loaderBar').style.width = pct + '%';
+                document.getElementById('loaderText').innerText = 'PREPARING INTERACTION... ' + pct + '%';
+                if (loaded === framePaths.length) { isLoaded = true; fadeLoader(callback); }
+            };
+            img.onerror = function() {
+                loaded++;
+                if (loaded === framePaths.length) { isLoaded = true; fadeLoader(callback); }
+            };
+            img.src = src;
+            images.push(img);
+        });
+    }
+
+    function fadeLoader(cb) {
+        var l = document.getElementById('loader');
+        l.style.opacity = '0';
+        setTimeout(function() { l.style.display = 'none'; cb(); }, 500);
+    }
+
+    // SCROLL PROGRESS -> ANIMATION (remapped to 0-72 index range)
+    function updateAnimationProgress(progress) {
+        console.log(">> Scroll progress updated:", progress);
+        var ti = 35;
+        if      (progress < 0.15) ti = 35 + (progress/0.15)*(43-35);
+        else if (progress < 0.45) ti = 43 + ((progress-0.15)/0.30)*(55-43);
+        else if (progress < 0.65) ti = 55 + ((progress-0.45)/0.20)*(65-55);
+        else if (progress < 0.80) ti = 65 + ((progress-0.65)/0.15)*(72-65);
+        else                      ti = 72;
+        tgtFI = ti;
+
+
+        var hc = document.getElementById('hero-content');
+        if (progress < 0.15) {
+            hc.style.opacity = 1 - progress/0.15;
+            hc.style.transform = 'translateY(' + (-progress*200) + 'px) scale(' + (1-progress*0.08) + ')';
+            hc.style.pointerEvents = 'auto';
+        } else { hc.style.opacity = 0; hc.style.pointerEvents = 'none'; }
+        var fr = document.getElementById('featuresReveal');
+        if (progress < 0.45) {
+            fr.style.clipPath = 'polygon(100% 0,100% 0,100% 100%,100% 100%)';
+        } else if (progress <= 0.70) {
+            var p = (progress-0.45)/0.25;
+            var x1 = Math.max(0,100-p*130), x2 = Math.max(0,100-p*130+30);
+            fr.style.clipPath = 'polygon('+x1+'% 0,100% 0,100% 100%,'+x2+'% 100%)';
+        } else {
+            if (window.scrollY < window.innerHeight*2) fr.style.clipPath = 'polygon(0 0,100% 0,100% 100%,0 100%)';
+        }
+    }
+
+    // STICKY POSITION CONTROLLER
+    window.addEventListener('scroll', function() {
+        var sy = window.scrollY, th = window.innerHeight * 2;
+        var fr = document.getElementById('featuresReveal');
+        if (sy >= th) {
+            fr.style.position = 'relative'; fr.style.marginTop = '200vh';
+            fr.style.height = 'auto'; fr.style.overflow = 'visible';
+            fr.style.clipPath = 'none'; fr.style.pointerEvents = 'auto';
+        } else {
+            fr.style.position = 'fixed'; fr.style.top = '0'; fr.style.marginTop = '0';
+            fr.style.height = '100vh'; fr.style.overflow = 'hidden';
+            fr.style.pointerEvents = sy > th*0.5 ? 'auto' : 'none';
+        }
+    });
+
+    // CAMPAIGN MAP DATA
+    var levelMetadata = {
+        1: {
+            title: "Awakening",
+            difficulty: "EASY",
+            status: "completed",
+            story: "Kael awakens in the ruins of the Kurogane Clan forge, piecing together his shattered memories and cybernetic core.",
+            rewards: ["100 XP", "50 Credits", "🪙 Basic Nano-Core"]
+        },
+        2: {
+            title: "Training Grounds",
+            difficulty: "EASY",
+            status: "completed",
+            story: "Test your cybernetic reflexes and practice ancient Kurogane sword arts against Rogue Clan drones.",
+            rewards: ["150 XP", "75 Credits", "🪙 Kurogane Alloy Steel"]
+        },
+        3: {
+            title: "Shadow Alley",
+            difficulty: "MEDIUM",
+            status: "completed",
+            story: "Infiltrate the neon-lit back alleys of District 9 to hunt down the informant who knows the location of General Ryu.",
+            rewards: ["250 XP", "120 Credits", "🪙 Cyber-Sensor Chip"]
+        },
+        4: {
+            title: "Iron Forge",
+            difficulty: "MEDIUM",
+            status: "completed",
+            story: "Reclaim the sacred blueprints of the Cursed Shadow Blade from the corporate security facility.",
+            rewards: ["300 XP", "150 Credits", "💎 Corrupted Shadow Shard"]
+        },
+        5: {
+            title: "Neon Market",
+            difficulty: "HARD",
+            status: "current",
+            story: "The market is in chaos. General Ryu's cyber-samurai are patrolling the plazas. Find the hidden entrance to the temple.",
+            rewards: ["450 XP", "250 Credits", "💎 Rare Red Core Energy"]
+        },
+        6: {
+            title: "Ghost Harbor",
+            difficulty: "HARD",
+            status: "locked",
+            story: "Hijack the armored corporate cargo ship carrying illicit cybernetic weaponry before it departs.",
+            rewards: ["500 XP", "300 Credits", "🪙 Prototype Weapon Core"]
+        },
+        7: {
+            title: "Cyber Temple",
+            difficulty: "VERY HARD",
+            status: "locked",
+            story: "Infiltrate the digital sanctuary of the corporate monks and bypass the high-security grid.",
+            rewards: ["600 XP", "400 Credits", "💎 Legendary Blade Hilt"]
+        },
+        8: {
+            title: "Crimson Peak",
+            difficulty: "VERY HARD",
+            status: "locked",
+            story: "Scale the heights of the volcanic processing plant to shut down the energy grid of the Citadel.",
+            rewards: ["750 XP", "500 Credits", "🪙 Volcano Ore"]
+        },
+        9: {
+            title: "Sky Citadel",
+            difficulty: "EXTREME",
+            status: "locked",
+            story: "Storm the floating fortress of the corporate board members and dismantle their defense network.",
+            rewards: ["900 XP", "600 Credits", "💎 Shogun Key Card"]
+        },
+        10: {
+            title: "Shogun's Throne",
+            difficulty: "NIGHTMARE (FINAL BOSS)",
+            status: "locked",
+            story: "Confront the betrayer, Shogun Orochi, in his throne room at the top of the Neo-Saitama Tower.",
+            rewards: ["1500 XP", "1000 Credits", "💎 Ancient Kurogane Heritage Blade"]
+        }
+    };
+
+    function selectMapLevel(num) {
+        var lvl = levelMetadata[num];
+        if (!lvl) return;
+        
+        document.getElementById('mPanelLevelNum').innerText = "LEVEL " + num + " • " + lvl.status.toUpperCase();
+        document.getElementById('mPanelTitle').innerText = lvl.title;
+        document.getElementById('mPanelDiff').innerText = "DIFFICULTY: " + lvl.difficulty;
+        document.getElementById('mPanelStory').innerText = lvl.story;
+        
+        var rewContainer = document.getElementById('mPanelRewards');
+        rewContainer.innerHTML = '';
+        lvl.rewards.forEach(function(r) {
+            var item = document.createElement('div');
+            item.className = 'reward-item';
+            item.innerText = r;
+            rewContainer.appendChild(item);
+        });
+
+        // Style the panel based on level status
+        var btn = document.getElementById('btnStartMission');
+        if (lvl.status === 'locked') {
+            btn.innerText = "SECTOR LOCKED";
+            btn.disabled = true;
+            btn.style.background = '#444';
+            btn.style.cursor = 'not-allowed';
+            btn.style.opacity = '0.5';
+            btn.style.boxShadow = 'none';
+        } else {
+            btn.innerText = lvl.status === 'completed' ? "REPLAY MISSION" : "START MISSION";
+            btn.disabled = false;
+            btn.style.background = '';
+            btn.style.cursor = '';
+            btn.style.opacity = '';
+            btn.style.boxShadow = '';
+        }
+
+        // Add class to slide panel in
+        document.getElementById('missionDetailPanel').classList.add('panel-open');
+        
+        // Highlight clicked node
+        document.querySelectorAll('.map-node').forEach(function(node) {
+            node.classList.remove('node-selected');
+        });
+        var clickedNode = document.getElementById('mapNode-' + num);
+        if (clickedNode) clickedNode.classList.add('node-selected');
+    }
+
+    function closeMissionPanel() {
+        document.getElementById('missionDetailPanel').classList.remove('panel-open');
+        document.querySelectorAll('.map-node').forEach(function(node) {
+            node.classList.remove('node-selected');
+        });
+    }
+
+    function drawConnectingPaths() {
+        var svg = document.getElementById('mapPathsSvg');
+        if (!svg) return;
+        svg.innerHTML = ''; // Clear previous elements
+        
+        // Re-append definitions for glow filter
+        var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        defs.innerHTML = '<filter id="neonPathGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="blur1"/><feGaussianBlur stdDeviation="3" result="blur2"/><feMerge><feMergeNode in="blur1"/><feMergeNode in="blur2"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+        svg.appendChild(defs);
+
+        var nodes = [];
+        var mapContainer = document.getElementById('campaignMapScreen');
+        var mapRect = mapContainer.getBoundingClientRect();
+        
+        for (var i = 1; i <= 10; i++) {
+            var nodeEl = document.getElementById('mapNode-' + i);
+            if (nodeEl) {
+                var rect = nodeEl.getBoundingClientRect();
+                nodes.push({
+                    x: rect.left + rect.width / 2 - mapRect.left,
+                    y: rect.top + rect.height / 2 - mapRect.top,
+                    completed: nodeEl.classList.contains('node-completed'),
+                    current: nodeEl.classList.contains('node-current')
+                });
+            }
+        }
+
+        for (var j = 0; j < nodes.length - 1; j++) {
+            var n1 = nodes[j];
+            var n2 = nodes[j + 1];
+            
+            var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', n1.x);
+            line.setAttribute('y1', n1.y);
+            line.setAttribute('x2', n2.x);
+            line.setAttribute('y2', n2.y);
+            
+            var color = 'rgba(255, 46, 77, 0.25)'; // Default locked path
+            if (n1.completed && n2.completed) {
+                color = '#00f3ff'; // Completed cyan glow
+            } else if (n1.completed && n2.current) {
+                color = '#00f3ff'; // Active path
+            } else if (n1.current || n2.current) {
+                color = 'rgba(255, 159, 0, 0.6)'; // Current level border glow
+            }
+            
+            line.setAttribute('stroke', color);
+            line.setAttribute('stroke-width', '4');
+            line.setAttribute('filter', 'url(#neonPathGlow)');
+            svg.appendChild(line);
+        }
+    }
+
+    function startMissionPlay() {
+        var title = document.getElementById('mPanelTitle').innerText;
+        alert(">> ENGAGING MISSION CONTEXT: \"" + title.toUpperCase() + "\"\n>> DEPLOYING SHADOW CORE...");
+    }
+
+    function exitMapScreen() {
+        var mapScreen = document.getElementById('campaignMapScreen');
+        mapScreen.style.transition = 'opacity 0.6s ease';
+        mapScreen.style.opacity = '0';
+        setTimeout(function() {
+            mapScreen.style.display = 'none';
+            // Restore hero container visibility
+            var heroContainer = document.getElementById('heroContainer');
+            if (heroContainer) heroContainer.style.display = 'block';
+            
+            // Show main screen by closing character modal (goes back to landing page)
+            closeCharModal();
+        }, 600);
+    }
+    
+    window.addEventListener('resize', function() {
+        if (document.getElementById('campaignMapScreen').style.display === 'block') {
+            drawConnectingPaths();
+        }
+    });
+
+    // BOOT
+    preloadImages(function() {
+        renderLoop();
+        preloadCharFrames();
+        gsap.registerPlugin(ScrollTrigger);
+        var sp = { progress: 0 };
+        gsap.to(sp, {
+            progress: 1, ease: 'none',
+            scrollTrigger: { trigger: '#scrollContainer', start: 'top top', end: 'bottom bottom', scrub: 1.0 },
+            onUpdate: function() { updateAnimationProgress(sp.progress); }
+        });
+        document.querySelectorAll('.reveal').forEach(function(el, i) {
+            el.dataset.delay = i * 150; revealObserver.observe(el);
+        });
+    });
+
+    document.getElementById('playBtn').addEventListener('click', openCharModal);
+</script>
+</body>
+</html>
