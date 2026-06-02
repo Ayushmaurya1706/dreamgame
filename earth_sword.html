@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daichi no Ken | Shadow Blade Cinematic</title>
+    <link rel="stylesheet" href="earth_sword.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Rotation Warning for mobile portrait -->
+    <div id="rotate-device-overlay">
+        <div class="rotate-content">
+            <div class="phone-icon-wrapper">
+                <svg class="phone-icon" viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="#00e676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                </svg>
+            </div>
+            <p class="rotate-text">PLEASE ROTATE YOUR DEVICE</p>
+            <p class="rotate-subtext">This cinematic experience requires Landscape Mode</p>
+        </div>
+    </div>
+
+    <!-- Image Preloader Overlay -->
+    <div class="loader-overlay" id="loaderOverlay">
+        <div class="loader-content">
+            <h2 class="loader-title">Gathering Earth Resolve...</h2>
+            <div class="loader-bar-bg">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen Flash Gold/Green earth pulse transition -->
+    <div id="screen-flash"></div>
+
+    <!-- Background Canvas -->
+    <canvas id="story-canvas"></canvas>
+    
+    <!-- Centered Vignette Overlay -->
+    <div class="vignette"></div>
+
+    <!-- Navigation Header -->
+    <nav>
+        <a href="index.html" class="logo">SHADOW BLADE</a>
+        <div class="nav-links">
+            <a href="swords.html">← ARSENAL SELECT</a>
+            <a href="index.html">HOME</a>
+            <a href="story.html">STORY</a>
+            <a href="generals.html">THE GENERALS</a>
+        </div>
+    </nav>
+
+    <!-- Side tracker indicator dots -->
+    <div class="swords-tracker">
+        <div class="tracker-item active" id="dot-1" onclick="scrollToSection(1)">
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-2" onclick="scrollToSection(2)">
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-3" onclick="scrollToSection(3)">
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-4" onclick="scrollToSection(4)">
+            <div class="tracker-dot"></div>
+        </div>
+        <div class="tracker-item" id="dot-5" onclick="scrollToSection(5)">
+            <div class="tracker-dot"></div>
+        </div>
+    </div>
+
+    <!-- Scroll snapping story panels wrapper -->
+    <div class="cinematic-container">
+
+        <!-- SECTION 1: INTRODUCTION -->
+        <section class="scene-panel scene-center" id="scene-1" data-index="1">
+            <div class="story-content-wrapper animate-element">
+                <span class="story-header">Chapter III</span>
+                <h1 class="story-title">DAICHI<br><span>NO KEN</span></h1>
+                <h2 class="story-subtitle">The Sword of the Earth</h2>
+                <p class="story-quote">"Strong as the mountain. Silent as the stone."</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE LEGEND -->
+        <section class="scene-panel scene-center" id="scene-2" data-index="2">
+            <div class="story-content-wrapper animate-element">
+                <span class="story-header">The Legend</span>
+                <p class="story-paragraph" style="font-size: 1.6rem; font-weight: 600; margin-bottom: 25px;">
+                    A legendary blade forged deep within the <span>sacred mountains</span>.
+                </p>
+                <p class="story-quote" style="font-size: 1.3rem; letter-spacing: 0.5px; color: var(--earth-glow); text-shadow: 0 0 10px rgba(0,230,118,0.3); margin-top: 15px;">
+                    "Its wielder carries the strength of the earth and the resolve to never fall."
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: POWERS OF THE EARTH -->
+        <section class="scene-panel scene-center" id="scene-3" data-index="3">
+            <div class="story-content-wrapper animate-element">
+                <span class="story-header">Sword Powers</span>
+                <h2 class="story-title" style="font-size: 3rem; margin-bottom: 10px;">POWER OF THE <span>EARTH</span></h2>
+                <p class="story-paragraph" style="font-size: 0.95rem; color: var(--text-gray);">The awakening abilities of the legendary blade:</p>
+                
+                <div class="powers-list">
+                    <!-- Power 1 -->
+                    <div class="power-card">
+                        <h3 class="power-heading">Unbreakable <span>Defense</span></h3>
+                        <p class="power-body">The wielder withstands even the strongest attacks.</p>
+                    </div>
+                    <!-- Power 2 -->
+                    <div class="power-card">
+                        <h3 class="power-heading">Stone <span>Break</span></h3>
+                        <p class="power-body">Release crushing shockwaves that shatter the ground.</p>
+                    </div>
+                    <!-- Power 3 -->
+                    <div class="power-card">
+                        <h3 class="power-heading">Earth <span>Step</span></h3>
+                        <p class="power-body">Move with steady force across the battlefield.</p>
+                    </div>
+                    <!-- Power 4 -->
+                    <div class="power-card">
+                        <h3 class="power-heading">Mountain <span>Awakening</span></h3>
+                        <p class="power-body">Call upon the ancient strength of the mountains for ultimate power.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE PHILOSOPHY -->
+        <section class="scene-panel scene-center" id="scene-4" data-index="4">
+            <div class="story-content-wrapper animate-element">
+                <span class="story-header">Philosophy</span>
+                <h2 class="story-title" style="font-size: 3rem; margin-bottom: 10px;">WAY OF THE <span>EARTH</span></h2>
+                <p class="story-quote" style="font-size: 1.35rem; color: var(--earth-glow); text-shadow: 0 0 10px rgba(0,230,118,0.3); line-height: 1.6; margin-top: 20px;">
+                    "The earth does not rush. It endures."
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: FINAL REVELATION -->
+        <section class="scene-panel scene-center" id="scene-5" data-index="5">
+            <div class="story-content-wrapper animate-element">
+                <span class="story-header">Destiny</span>
+                <p class="story-paragraph" style="font-size: 1.8rem; font-weight: 800; line-height: 1.6; margin-bottom: 30px; letter-spacing: 0.5px; text-transform: uppercase;">
+                    "When the world is consumed by darkness, <br>
+                    the <span style="color: var(--earth-glow); text-shadow: 0 0 15px rgba(0,230,118,0.5);">Earth Sword</span> shall awaken <br>
+                    and light the path of destiny."
+                </p>
+                <p style="font-size: 0.75rem; letter-spacing: 4px; color: #555; text-transform: uppercase; margin-top: 50px;">
+                    Daichi no Ken floats in the quiet stone.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const container = document.querySelector('.cinematic-container');
+        const canvas = document.getElementById('story-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let frameImages = [];
+        const framesCount = 61;
+        let loadedCount = 0;
+        let isReady = false;
+
+        // Preload Frame Sequences
+        function preloadFrames() {
+            const loaderBar = document.getElementById('loaderBar');
+            const loaderOverlay = document.getElementById('loaderOverlay');
+            
+            for (let i = 1; i <= framesCount; i++) {
+                const img = new Image();
+                const paddedNum = String(i).padStart(3, '0');
+                img.src = `Characters/Earth Sward/Earth Animation/ezgif-8fd7d011b2a9854c-jpg/ezgif-frame-${paddedNum}.jpg`;
+                
+                img.onload = img.onerror = () => {
+                    loadedCount++;
+                    const percent = Math.round((loadedCount / framesCount) * 100);
+                    if (loaderBar) loaderBar.style.width = percent + '%';
+                    
+                    if (loadedCount === framesCount) {
+                        isReady = true;
+                        if (loaderOverlay) {
+                            loaderOverlay.style.opacity = '0';
+                            setTimeout(() => loaderOverlay.style.display = 'none', 500);
+                        }
+                        
+                        // Initial draw
+                        resizeCanvas();
+                        drawFrameForScroll(container.scrollTop);
+                        startAmbientSparks();
+                        
+                        // Set first section text visible
+                        setTimeout(() => {
+                            document.querySelector('#scene-1 .animate-element').classList.add('visible');
+                        }, 600);
+                    }
+                };
+                frameImages.push(img);
+            }
+        }
+
+        function drawFrameForScroll(scrollY) {
+            if (!isReady) return;
+            
+            const h = window.innerHeight;
+            const w = window.innerWidth;
+            
+            let scene = 1;
+            let progress = 0;
+            
+            if (scrollY < h) {
+                scene = 1;
+                progress = scrollY / h;
+            } else if (scrollY < h * 2) {
+                scene = 2;
+                progress = (scrollY - h) / h;
+            } else if (scrollY < h * 3) {
+                scene = 3;
+                progress = (scrollY - h * 2) / h;
+            } else if (scrollY < h * 4) {
+                scene = 4;
+                progress = (scrollY - h * 3) / h;
+            } else {
+                scene = 5;
+                progress = Math.min(1.0, (scrollY - h * 4) / h);
+            }
+            
+            let startFrame = 0;
+            let endFrame = 15;
+            
+            if (scene === 1) {
+                startFrame = 0;
+                endFrame = 15;
+            } else if (scene === 2) {
+                startFrame = 15;
+                endFrame = 30;
+            } else if (scene === 3) {
+                startFrame = 30;
+                endFrame = 45;
+            } else if (scene === 4) {
+                startFrame = 45;
+                endFrame = 55;
+            } else {
+                startFrame = 55;
+                endFrame = 60;
+            }
+            
+            const frameIndex = Math.min(framesCount - 1, Math.floor(startFrame + progress * (endFrame - startFrame)));
+            const img = frameImages[frameIndex];
+            if (!img || img.width === 0) return;
+            
+            ctx.clearRect(0, 0, w, h);
+            
+            const ir = img.width / img.height;
+            const cr = w / h;
+            
+            let dw, dh, dx, dy;
+            
+            // Constant scale and centered position across ALL scenes!
+            const scale = w > 820 ? 0.88 : 0.95;
+            if (cr > ir) {
+                dw = w * scale; dh = dw / ir;
+            } else {
+                dh = h * scale; dw = dh * ir;
+            }
+            dx = (w - dw) / 2;
+            dy = (h - dh) / 2 + Math.sin(Date.now() / 600) * 12; // slow float drift
+            
+            ctx.drawImage(img, dx, dy, dw, dh);
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if (isReady) {
+                drawFrameForScroll(container.scrollTop);
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        // Particle earth sparks simulation (floating dust, stone fragments, gold/green earth energy)
+        let sparks = [];
+        class Spark {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                const scrollY = container.scrollTop;
+                const h = window.innerHeight;
+                const w = window.innerWidth;
+                
+                const isFinalScene = scrollY >= h * 3.5;
+                
+                this.x = w * 0.5 + (Math.random() - 0.5) * w * 0.85;
+                this.y = h * 0.65 + (Math.random() - 0.5) * h * 0.45;
+                
+                // Varied sizes: small dust (size 0.5-1.5), stone fragments (size 1.5-3.5)
+                this.size = Math.random() * (isFinalScene ? 4.5 : 3.0) + 0.5;
+                
+                // Slow rising dust currents
+                this.speedY = -(Math.random() * (isFinalScene ? 2.5 : 1.2) + 0.3);
+                this.speedX = (Math.random() - 0.5) * (isFinalScene ? 2.0 : 0.8);
+                
+                this.opacity = Math.random() * 0.75 + 0.25;
+                this.decay = Math.random() * 0.01 + 0.003;
+                
+                // Green emerald (#00e676) or Earth Gold (#ffd700)
+                this.color = Math.random() > 0.45 ? '#00e676' : '#ffd700';
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.opacity -= this.decay;
+                if (this.opacity <= 0 || this.y < -10) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = this.size * 2.2;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1.0;
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // Initialize sparks
+        const maxSparks = 60;
+        for (let i = 0; i < maxSparks; i++) {
+            sparks.push(new Spark());
+        }
+
+        function startAmbientSparks() {
+            function animate() {
+                const scrollY = container.scrollTop;
+                // Draw current frame based on scroll
+                drawFrameForScroll(scrollY);
+                
+                // Draw drifting spark particles on top
+                sparks.forEach(s => {
+                    s.update();
+                    s.draw();
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Scroll snap link trigger
+        function scrollToSection(index) {
+            const section = document.querySelector(`[data-index="${index}"]`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Screen Flash earth pulse effect
+        let flashTriggered = false;
+        function triggerScreenFlash() {
+            const flash = document.getElementById('screen-flash');
+            if (!flash) return;
+            flash.style.transition = 'none';
+            flash.style.opacity = '0.85';
+            flash.offsetHeight; // reflow
+            flash.style.transition = 'opacity 1.3s cubic-bezier(0.1, 0.8, 0.1, 1)';
+            flash.style.opacity = '0';
+        }
+
+        // Main scroll listener logic
+        container.addEventListener('scroll', () => {
+            const scrollY = container.scrollTop;
+            const h = window.innerHeight;
+            
+            // Calculate active index
+            const index = Math.min(5, Math.max(1, Math.round(scrollY / h) + 1));
+            
+            // Set active dot
+            document.querySelectorAll('.tracker-item').forEach(item => item.classList.remove('active'));
+            const activeItem = document.getElementById(`dot-${index}`);
+            if (activeItem) activeItem.classList.add('active');
+            
+            // Trigger animation on scroll for active section typography
+            document.querySelectorAll('.animate-element').forEach(el => {
+                const parentSection = el.closest('.scene-panel');
+                const pIndex = parseInt(parentSection.dataset.index);
+                if (pIndex === index) {
+                    el.classList.add('visible');
+                }
+            });
+            
+            // Earth pulse flash on entering Scene 5
+            if (scrollY >= h * 3.75) {
+                if (!flashTriggered) {
+                    flashTriggered = true;
+                    triggerScreenFlash();
+                }
+            } else {
+                flashTriggered = false;
+            }
+        });
+
+        // Initialize frames preloader
+        preloadFrames();
+    </script>
+</body>
+</html>

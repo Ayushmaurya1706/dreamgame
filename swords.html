@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weapon Arsenal | Shadow Blade</title>
+    <link rel="stylesheet" href="swords.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background Image -->
+    <div class="portal-bg-image"></div>
+
+    <!-- Floating Background Sparks Canvas -->
+    <canvas id="portal-canvas"></canvas>
+    <div class="portal-bg-glows"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html" class="logo">SHADOW BLADE</a>
+        <div class="nav-links">
+            <a href="index.html">← BACK TO HOME</a>
+            <a href="story.html">STORY</a>
+            <a href="generals.html">THE FIVE GENERALS</a>
+        </div>
+    </nav>
+
+    <!-- Selection Container -->
+    <div class="portal-container">
+        
+        <div class="portal-header">
+            <span class="portal-eyebrow">The Armory</span>
+            <h1 class="portal-title">THE THREE SACRED SWORDS</h1>
+        </div>
+
+        <div class="portal-grid">
+            
+            <!-- CARD 1: FLAME SWORD -->
+            <div class="sword-card card-flame" onclick="location.href='fire_sword.html'">
+                <div class="card-glow-overlay"></div>
+                <span class="card-num">Sword I</span>
+                <div class="card-icon">🔥</div>
+                <h2 class="card-title">Homura no Ken</h2>
+                <p class="card-desc">"Forged in the heart of a dying volcano, this legendary blade carries the fury of fire itself."</p>
+                <button class="card-btn">Enter Legend</button>
+            </div>
+
+            <!-- CARD 2: WIND SWORD -->
+            <div class="sword-card card-storm" onclick="location.href='wind_sword.html'">
+                <div class="card-glow-overlay"></div>
+                <span class="card-num">Sword II</span>
+                <div class="card-icon">⚡</div>
+                <h2 class="card-title">Kaze no Ken</h2>
+                <p class="card-desc">"Forged within the heart of an eternal storm, Kaze No Ken grants unmatched speed and the power to command the winds."</p>
+                <button class="card-btn">Enter Legend</button>
+            </div>
+
+            <!-- CARD 3: EARTH SWORD -->
+            <div class="sword-card card-spirit" onclick="location.href='earth_sword.html'">
+                <div class="card-glow-overlay"></div>
+                <span class="card-num">Sword III</span>
+                <div class="card-icon">🛡</div>
+                <h2 class="card-title">Daichi no Ken</h2>
+                <p class="card-desc">"A legendary blade forged deep within the sacred mountains. Its wielder carries the strength of the earth and the resolve to never fall."</p>
+                <button class="card-btn">Enter Legend</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Background Sparks Animation Code -->
+    <script>
+        const canvas = document.getElementById('portal-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * height; // distribute initially
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 20;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = -(Math.random() * 1.2 + 0.4);
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.4 + 0.15;
+                this.decay = Math.random() * 0.002 + 0.0005;
+                
+                // Red, Cyan, and Green sparks matching the three card colors
+                const colors = ['rgba(255, 87, 34, ', 'rgba(0, 229, 255, ', 'rgba(0, 230, 118, '];
+                this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.opacity -= this.decay;
+                if (this.opacity <= 0 || this.y < -10) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.fillStyle = this.colorPrefix + this.opacity + ')';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const particles = [];
+        const maxParticles = 60;
+        for (let i = 0; i < maxParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
