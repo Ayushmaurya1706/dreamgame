@@ -4,3 +4,4 @@ scratch/
 temp_profile/
 *.pyc
 __pycache__/
+keys.js

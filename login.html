@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate of Shadows | Shadow Blade</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Fullscreen Dark Overlay Background -->
+    <div class="login-bg-image"></div>
+    <div class="login-bg-glows"></div>
+
+    <!-- Navigation Header -->
+    <nav>
+        <a href="index.html" class="logo">SHADOW BLADE</a>
+        <div class="nav-links">
+            <a href="index.html">← BACK TO HOME</a>
+            <a href="swords.html">SWORDS</a>
+            <a href="story.html">STORY</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="auth-container">
+        
+        <div class="auth-card">
+            
+            <!-- Tab Headers -->
+            <div class="auth-tabs">
+                <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">LOGIN</button>
+                <button class="tab-btn" id="tab-signup" onclick="switchTab('signup')">SIGN UP</button>
+            </div>
+
+            <!-- Validation/Status Messages -->
+            <div id="status-message" class="status-msg hidden"></div>
+
+            <!-- LOGIN FORM -->
+            <form id="login-form" class="auth-form" onsubmit="handleAuth(event, 'login')">
+                <div class="input-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                
+                <div class="forgot-link-wrapper">
+                    <a href="#" class="forgot-link" onclick="handleForgotPassword(event)">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="submit-btn" id="btn-login-submit">
+                    <span class="btn-text">Enter Gate</span>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+
+            <!-- SIGN UP FORM -->
+            <form id="signup-form" class="auth-form hidden" onsubmit="handleAuth(event, 'signup')">
+                <div class="input-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required placeholder="name@example.com">
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required placeholder="Min 6 characters">
+                </div>
+                <div class="input-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" required placeholder="••••••••">
+                </div>
+
+                <button type="submit" class="submit-btn" id="btn-signup-submit">
+                    <span class="btn-text">Forge Destiny</span>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Firebase Authentication Client Controller -->
+    <script type="module">
+        import { auth } from "./firebase-config.js";
+        import { 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            sendPasswordResetEmail,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Global status updates
+        const statusEl = document.getElementById('status-message');
+
+        function showStatus(message, isSuccess = false) {
+            statusEl.innerText = message;
+            statusEl.className = `status-msg ${isSuccess ? 'success' : 'error'}`;
+            statusEl.classList.remove('hidden');
+        }
+
+        function clearStatus() {
+            statusEl.className = 'status-msg hidden';
+            statusEl.innerText = '';
+        }
+
+        // Toggles Loading Spinners
+        function setSubmitting(btnId, isSubmitting) {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+            const text = btn.querySelector('.btn-text');
+            const spinner = btn.querySelector('.spinner');
+            if (isSubmitting) {
+                btn.disabled = true;
+                text.style.opacity = '0';
+                spinner.classList.remove('hidden');
+            } else {
+                btn.disabled = false;
+                text.style.opacity = '1';
+                spinner.classList.add('hidden');
+            }
+        }
+
+        // Main Auth Actions (Form Submission handler)
+        window.handleAuth = async function(e, mode) {
+            e.preventDefault();
+            clearStatus();
+
+            if (mode === 'login') {
+                const email = document.getElementById('login-email').value.trim();
+                const password = document.getElementById('login-password').value;
+                setSubmitting('btn-login-submit', true);
+
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    showStatus("Authentication successful! Redirecting...", true);
+                    setTimeout(() => window.location.href = "index.html", 1200);
+                } catch (error) {
+                    console.error(error);
+                    let cleanMsg = error.message;
+                    if (error.code === 'auth/invalid-credential') {
+                        cleanMsg = "Invalid email or password. Please try again.";
+                    } else if (error.code === 'auth/invalid-email') {
+                        cleanMsg = "The email address formatting is invalid.";
+                    }
+                    showStatus(cleanMsg, false);
+                } finally {
+                    setSubmitting('btn-login-submit', false);
+                }
+            } else {
+                const email = document.getElementById('signup-email').value.trim();
+                const password = document.getElementById('signup-password').value;
+                const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+                if (password.length < 6) {
+                    showStatus("Password must be at least 6 characters.", false);
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    showStatus("Passwords do not match.", false);
+                    return;
+                }
+
+                setSubmitting('btn-signup-submit', true);
+
+                try {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    showStatus("Account successfully created! Welcome to Shadow Blade.", true);
+                    setTimeout(() => window.location.href = "index.html", 1200);
+                } catch (error) {
+                    console.error(error);
+                    let cleanMsg = error.message;
+                    if (error.code === 'auth/email-already-in-use') {
+                        cleanMsg = "This email is already registered. Try logging in.";
+                    }
+                    showStatus(cleanMsg, false);
+                } finally {
+                    setSubmitting('btn-signup-submit', false);
+                }
+            }
+        };
+
+        // Forgot Password Action
+        window.handleForgotPassword = async function(e) {
+            e.preventDefault();
+            clearStatus();
+            const email = document.getElementById('login-email').value.trim();
+            if (!email) {
+                showStatus("Please enter your email address in the Email field first.", false);
+                return;
+            }
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                showStatus("Reset link sent! Please check your email inbox.", true);
+            } catch (error) {
+                console.error(error);
+                showStatus(error.message, false);
+            }
+        };
+
+        // Switch Forms Toggles
+        window.switchTab = function(mode) {
+            clearStatus();
+            const tabLogin = document.getElementById('tab-login');
+            const tabSignup = document.getElementById('tab-signup');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+
+            if (mode === 'login') {
+                tabLogin.classList.add('active');
+                tabSignup.classList.remove('active');
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+            } else {
+                tabLogin.classList.remove('active');
+                tabSignup.classList.add('active');
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+            }
+        };
+
+        // Redirect if already logged in
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // If user is already authenticated, redirect them back to home
+                // (except if they just logged in/registered, which has its own redirection delay)
+                if (!statusEl.classList.contains('success')) {
+                    window.location.href = "index.html";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

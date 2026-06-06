@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #030307;
+    --flame-glow: #ff5722;
+    --storm-glow: #00e5ff;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-white: #ffffff;
+    --text-gray: #ababaf;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', -apple-system, sans-serif;
+    overflow: hidden;
+}
+
+/* Fullscreen Background Image */
+.login-bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(3, 3, 7, 0.82), rgba(3, 3, 7, 0.82)), url('Characters/BAckground swards.png') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ambient glows in background */
+.login-bg-glows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 35% 50%, rgba(255, 87, 34, 0.06) 0%, transparent 60%),
+                radial-gradient(circle at 65% 50%, rgba(0, 229, 255, 0.06) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Top Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(3, 3, 7, 0.95) 0%, rgba(3, 3, 7, 0) 100%);
+    backdrop-filter: blur(2px);
+    pointer-events: auto;
+}
+
+.logo {
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 1.25rem;
+    color: var(--text-white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-white);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Centered Form Wrapper */
+.auth-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 24px 24px;
+    z-index: 10;
+    position: relative;
+}
+
+/* Box-Free Form Container (Transparent with central glow) */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px;
+    background: radial-gradient(circle, rgba(8, 8, 16, 0.85) 0%, rgba(3, 3, 7, 0.2) 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Tabs */
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.tab-btn:hover {
+    color: var(--text-white);
+}
+
+.tab-btn.active {
+    color: var(--storm-glow);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--storm-glow);
+    box-shadow: 0 0 8px var(--storm-glow);
+}
+
+/* Forms */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(3, 3, 7, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--storm-glow);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    background: rgba(3, 3, 7, 0.85);
+}
+
+/* Forgot Password link */
+.forgot-link-wrapper {
+    text-align: right;
+    margin-top: -8px;
+}
+
+.forgot-link {
+    color: var(--text-gray);
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: var(--flame-glow);
+    text-shadow: 0 0 8px rgba(255, 87, 34, 0.3);
+}
+
+/* Submit Button styling */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 1px solid var(--flame-glow);
+    color: var(--text-white);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(6% 0, 100% 0, 100% 70%, 94% 100%, 0 100%, 0 30%);
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: var(--flame-glow);
+    box-shadow: 0 0 20px var(--flame-glow);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--text-white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Status message alert box styling */
+.status-msg {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.3s;
+}
+
+.status-msg.error {
+    background: rgba(239, 83, 80, 0.1);
+    border: 1px solid rgba(239, 83, 80, 0.3);
+    color: #ef5350;
+    text-shadow: 0 0 5px rgba(239, 83, 80, 0.2);
+}
+
+.status-msg.success {
+    background: rgba(102, 187, 106, 0.1);
+    border: 1px solid rgba(102, 187, 106, 0.3);
+    color: #66bb6a;
+    text-shadow: 0 0 5px rgba(102, 187, 106, 0.2);
+}
+
+.hidden {
+    display: none !important;
+}

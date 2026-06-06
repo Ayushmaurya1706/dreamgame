@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shadow Blade | Official Site</title>
     <meta name="description" content="Shadow Blade: A high-octane cyberpunk action RPG. Master the blade, survive the neon.">
-    <link rel="stylesheet" href="index.css?v=12">
+    <link rel="stylesheet" href="index.css?v=15">
     <!-- Google Fonts for better typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,8 +44,9 @@
                 <a href="swords.html">Swords</a>
                 <a href="#">Media</a>
             </div>
-            <div class="meta-links">
-                <a href="#" style="color: var(--white); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 4px;">SIGN IN</a>
+            <div class="meta-links" style="display: flex; align-items: center; gap: 15px; z-index: 110;">
+                <span id="user-email" style="font-size: 0.8rem; color: #ababaf; font-weight: 500; display: none;"></span>
+                <a href="login.html" id="nav-signin" style="color: #ffffff; text-decoration: none; font-size: 0.8rem; border: 1px solid rgba(255, 255, 255, 0.15); padding: 8px 16px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;">SIGN IN</a>
             </div>
         </nav>
 
@@ -1031,6 +1032,51 @@
     });
 
     document.getElementById('playBtn').addEventListener('click', openCharModal);
+</script>
+
+<!-- Firebase Auth Observer -->
+<script type="module">
+    import { auth } from "./firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const userEmailEl = document.getElementById('user-email');
+    const signinBtn = document.getElementById('nav-signin');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            if (userEmailEl) {
+                userEmailEl.innerText = user.email;
+                userEmailEl.style.display = "inline";
+            }
+            if (signinBtn) {
+                signinBtn.innerText = "LOGOUT";
+                signinBtn.href = "#";
+                signinBtn.style.color = "#ff5722";
+                signinBtn.style.borderColor = "rgba(255, 87, 34, 0.4)";
+                signinBtn.onclick = async function(e) {
+                    e.preventDefault();
+                    try {
+                        await signOut(auth);
+                        window.location.reload();
+                    } catch (err) {
+                        console.error("Sign out error:", err);
+                    }
+                };
+            }
+        } else {
+            if (userEmailEl) {
+                userEmailEl.innerText = "";
+                userEmailEl.style.display = "none";
+            }
+            if (signinBtn) {
+                signinBtn.innerText = "SIGN IN";
+                signinBtn.href = "login.html";
+                signinBtn.style.color = "#ffffff";
+                signinBtn.style.borderColor = "rgba(255, 255, 255, 0.15)";
+                signinBtn.onclick = null;
+            }
+        }
+    });
 </script>
 </body>
 </html>
